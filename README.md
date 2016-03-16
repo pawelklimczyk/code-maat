@@ -18,7 +18,7 @@ Maat was a goddess in ancient Egyptian myth. She was the one who gave us order o
 
 ## License
 
-Copyright © 2013-2015 Adam Tornhill
+Copyright © 2013-2016 Adam Tornhill
 
 Distributed under the [GNU General Public License v3.0](http://www.gnu.org/licenses/gpl.html).
 
@@ -48,11 +48,13 @@ To analyze our VCS data we need to define a temporal period of interest. Over ti
 
 #### Generate a git log file using the following command:
 
+This is the original log format used in the book. Use the `-c git` parse option when [Running Code Maat](#running-code-maat).
+
           git log --pretty=format:'[%h] %aN %ad %s' --date=short --numstat --after=YYYY-MM-DD
 
-Note that there's a second supported Git format as well, imaginatively named `git2`. This format is more tolerant and faster to parse, so please prefer it over the plain `git` format described above:
+There's a second supported Git format as well. It's more tolerant and faster to parse, so please prefer it over the plain `git` format described above. Use the `-c git2` parse option when [Running Code Maat](#running-code-maat).
 
-          git log --all -M -C --numstat --date=short --pretty=format:'--%h--%ad--%an' --no-renames
+          git log --all --numstat --date=short --pretty=format:'--%h--%ad--%aN' --no-renames
 
 #### Generate a Mercurial log file using the following command:
 
@@ -172,15 +174,17 @@ By using the techniques from [Your Code as a Crime Scene](https://pragprog.com/b
 
 ![code age visualized](doc/imgs/code_age_sample.png).
 
-### Visualizing the result
+### Visualise your Results
 
-I've chosen to keep the visualizations separate from the analysis engine itself. It just gives you more flexibility. After all, CSV gives you a nice format to transform and experiment with.
+Code Maat doesn't include any visualizations itself. However, you do have a bunch of options.
 
-I present a whole suite of different visualization techniques and options in [Your Code as a Crime Scene](https://pragprog.com/book/atcrime/your-code-as-a-crime-scene), so do check out the book if you want to dive deeper. You can also look at some of the tools I've open sourced such as [Metrics Tree Map](https://github.com/adamtornhill/MetricsTreeMap):
+First there's [Empear Developer](http://empear.com/empear-developer-edition/). This is a complete application with automated repository mining and visualizations. [Empear Developer](http://empear.com/empear-developer-edition/) is built around the ideas prototyped in Code Maat.
+
+I also present a whole suite of different visualization techniques and options in [Your Code as a Crime Scene](https://pragprog.com/book/atcrime/your-code-as-a-crime-scene), so do check out the book if you want to dive deeper. You can also look at some of the basic tools I've open sourced such as [Metrics Tree Map](https://github.com/adamtornhill/MetricsTreeMap):
 
 ![coupling visualized](doc/imgs/tree_map_sample.png).
 
-An alternative is to save the generated CSV to a file and import it into a spreadsheet program such as OpenOffice or Excel. That allows us to generate charts such as the ones below:
+Yet another alternative is to save the generated CSV to a file and import it into a spreadsheet program such as OpenOffice or Excel. That allows us to generate charts such as the ones below:
 
 ![coupling visualized](doc/imgs/coupling_sample.png).
 
